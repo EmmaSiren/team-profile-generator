@@ -1,10 +1,18 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
+
 const Employee = require('./lib/employee');
 const Manager = require('./lib/manager');
 const Engineer = require('./lib/engineer');
 const Intern = require('./lib/intern');
+const team = [];
+
 const askAllEmployees = require('./questions');
+const html = require('./src/generateHTML');
+const path = require('path');
+const outputPath = path.join(__dirname, 'dist');
+const newFile = path.join(outputPath, 'team-profile.html');
+
 
 
 function createTeam() {
@@ -24,7 +32,8 @@ function createTeam() {
           answers.email,
           managerOfficeNumber.officeNumber,
         );
-        console.log(manager);
+        team.push(manager);
+          console.log(manager);
         continueTeam();
       });
     });
@@ -64,23 +73,46 @@ function createTeam() {
             answers.email,
             engineerGithub.username,
           );
-
-          console.log(engineer);
-            // continueTeam();
           
+          team.push(engineer);
+            console.log(engineer);
+          continueTeam();
         });
       });
     };
   };
 
+  function internCard() {
+    console.log('Please enter Intern information.');
+    inquirer.prompt(askAllEmployees).then((answers) => {
+      inquirer.prompt([
+        {
+          type: 'input',
+          name: 'school',
+          message: 'What school do they go to?',
+        },
+      ]).then((internSchool) => {
+        const intern = new Intern(
+          answers.name,
+          answers.employeeId,
+          answers.email,
+          internSchool.school,
+        );
+        team.push(intern);
+          console.log(intern);
+        continueTeam();
+      });
+    });
+  };
 
-// inquirer.prompt([
-//   {
-//     type: 'input',
-//     name: 'internSchool',
-//     message: `What school does ${Intern} go to?`,
-//   },
-// ]);
+  function createHTML() {
+    console.log(team[0]);
+    // fs.writeFile(newFile, html(team), 'utf-8', (err) => {
+    //   err ? console.log(err) : console.log('Done!');
+    // });
+    console.log(html(team));
+  };
+
 managerCard();
 };
 
