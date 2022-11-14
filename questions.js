@@ -13,12 +13,7 @@ const askAllEmployees = [
       type: 'input',
       name: 'email',
       message: 'What is their email address?',
-    },
-    {
-      type: 'input',
-      name: 'officeNumber',
-      message: 'What is their office number?',
     }
 ];
 
-module.exports = Questions;
+module.exports = askAllEmployees;
