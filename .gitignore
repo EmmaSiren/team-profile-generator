@@ -1,5 +1,5 @@
 .DS_Store
 node_modules
-index.html
+sampleindex.html
 .vscode
 package-lock.json
