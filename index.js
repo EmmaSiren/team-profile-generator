@@ -106,11 +106,10 @@ function createTeam() {
   };
 
   function createHTML() {
-    console.log(team[0]);
-    // fs.writeFile(newFile, html(team), 'utf-8', (err) => {
-    //   err ? console.log(err) : console.log('Done!');
-    // });
-    console.log(html(team));
+    fs.writeFile(newFile, html(team), 'utf-8', (err) => {
+      err ? console.log(err) : console.log('Done!');
+    });
+    // console.log(html(team));
   };
 
 managerCard();
