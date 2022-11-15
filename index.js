@@ -33,7 +33,6 @@ function createTeam() {
           managerOfficeNumber.officeNumber,
         );
         team.push(manager);
-          console.log(manager);
         continueTeam();
       });
     });
@@ -75,7 +74,6 @@ function createTeam() {
           );
           
           team.push(engineer);
-            console.log(engineer);
           continueTeam();
         });
       });
@@ -99,7 +97,6 @@ function createTeam() {
           internSchool.school,
         );
         team.push(intern);
-          console.log(intern);
         continueTeam();
       });
     });
@@ -109,7 +106,6 @@ function createTeam() {
     fs.writeFile(newFile, html(team), 'utf-8', (err) => {
       err ? console.log(err) : console.log('Done!');
     });
-    // console.log(html(team));
   };
 
 managerCard();
